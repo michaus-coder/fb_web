@@ -5,12 +5,13 @@ import {
 } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDmXgb_58lO7aK_ujN37pGlNxzWGEU0YpI",
-  authDomain: "fb9-sandbox.firebaseapp.com",
-  projectId: "fb9-sandbox",
-  storageBucket: "fb9-sandbox.appspot.com",
-  messagingSenderId: "867529587246",
-  appId: "1:867529587246:web:dc754ab7840c737f47bdbf"
+  apiKey: "AIzaSyCpmj-NmWI5ultEAyNIXuh2tcGrju6Vkg4",
+  authDomain: "cobawebfirebase.firebaseapp.com",
+  databaseURL: "https://cobawebfirebase-default-rtdb.firebaseio.com",
+  projectId: "cobawebfirebase",
+  storageBucket: "cobawebfirebase.appspot.com",
+  messagingSenderId: "783465140501",
+  appId: "1:783465140501:web:68b276a562509d5a6f991c"
 }
 
 // init firebase
@@ -20,7 +21,7 @@ initializeApp(firebaseConfig)
 const db = getFirestore()
 
 // collection ref
-const colRef = collection(db, 'books')
+const colRef = collection(db, 'cities')
 
 // get collection data
 getDocs(colRef)

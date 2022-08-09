@@ -41,11 +41,11 @@ getDocs(colRef)
   })
 
 // adding docs
-const addBookForm = document.querySelector('.add')
+const addBookForm = await document.querySelector('.add')
 addBookForm.addEventListener('submit', (e) => {
   e.preventDefault()
 
-  addDoc(colRef, {
+  await addDoc(colRef, {
     title: addBookForm.title.value,
     author: addBookForm.author.value,
   })

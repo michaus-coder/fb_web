@@ -15,7 +15,10 @@ const firebaseConfig = {
 }
 
 // init firebase
-initializeApp(firebaseConfig)
+initializeApp(firebaseConfig,{
+  experimentalForceLongPolling: true, 
+  useFetchStreams: false, 
+})
 
 // init services
 const db = getFirestore()

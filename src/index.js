@@ -65,4 +65,5 @@ addBookForm.addEventListener('submit', (e) => {
   .then(() => {
     addBookForm.reset()
   })
+  alert("Sudah berhasil ditambahkan")
 })

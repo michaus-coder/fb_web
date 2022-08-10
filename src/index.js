@@ -14,13 +14,21 @@ const firebaseConfig = {
     appId: "1:783465140501:web:68b276a562509d5a6f991c"
 };
 
+const fbConfig2 = {
+  apiKey: "AIzaSyA0N75BHzj4pGmaFgb1fFcuOS1CBXZ5UiY",
+  authDomain: "wastemanagement-65034.firebaseapp.com",
+  projectId: "wastemanagement-65034",
+  storageBucket: "wastemanagement-65034.appspot.com",
+  messagingSenderId: "540665383546",
+  appId: "1:540665383546:web:d97539d1d9330c55db09c3"
+}
 //init fb app
-initializeApp(firebaseConfig)
+initializeApp(fbConfig2)
 
 //init service
 const db = getFirestore()
 
-var dbLokasi = "books"
+var dbLokasi = "mitra"
 const colRef = collection(db, dbLokasi) //get table name
 
 //ngambil all data taruh di console

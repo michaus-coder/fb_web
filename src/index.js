@@ -92,7 +92,7 @@ article.addEventListener('submit', (e) => {
     id_artikel : randomIDArtikel,
     judul : article.judul_artikel123.value,
     konten : article.keterangan_artikel123.value,
-    waktu_artikel :new Date().toUTCString();
+    waktu_artikel :String(new Date().toUTCString())
   })
 
  .then(() => {

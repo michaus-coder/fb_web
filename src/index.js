@@ -1,35 +1,29 @@
-import { initializeApp } from 'firebase/app'
-import {
-    getFirestore, collection, getDocs, addDoc
-} from 'firebase/firestore'
+// //import { initializeApp } from 'firebase/app'
+// const initializeApp = require('firebase/app')
+// import {
+//     getFirestore, collection, getDocs, addDoc
+// } from 'firebase/firestore'
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+import { getFirestore, getDocs, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 
 console.log("js updated!")
 const firebaseConfig = {
-    apiKey: "AIzaSyCpmj-NmWI5ultEAyNIXuh2tcGrju6Vkg4",
-    authDomain: "cobawebfirebase.firebaseapp.com",
-    databaseURL: "https://cobawebfirebase-default-rtdb.firebaseio.com",
-    projectId: "cobawebfirebase",
-    storageBucket: "cobawebfirebase.appspot.com",
-    messagingSenderId: "783465140501",
-    appId: "1:783465140501:web:68b276a562509d5a6f991c"
-};
-
-const fbConfig2 = {
   apiKey: "AIzaSyA0N75BHzj4pGmaFgb1fFcuOS1CBXZ5UiY",
   authDomain: "wastemanagement-65034.firebaseapp.com",
   projectId: "wastemanagement-65034",
   storageBucket: "wastemanagement-65034.appspot.com",
   messagingSenderId: "540665383546",
   appId: "1:540665383546:web:d97539d1d9330c55db09c3"
-}
+};
 //init fb app
-initializeApp(fbConfig2)
+initializeApp(firebaseConfig)
 
 //init service
 const db = getFirestore()
 
 var dbLokasi = "mitra"
 const colRef = collection(db, dbLokasi) //get table name
+const colArticle = collection(db, "artikel")
 
 //ngambil all data taruh di console
 getDocs(colRef)
@@ -59,10 +53,9 @@ getDocs(colRef)
 //         addBookForm.reset()
 //     })
 // })
-const addBookForm =  document.querySelector('.add')
+const addBookForm =  document.querySelector('.add') //pick which had class add
 addBookForm.addEventListener('submit', (e) => {
   e.preventDefault()
-
    addDoc(colRef, {
     nama_mitra : addBookForm.nama_mitra.value,
     email_mitra : addBookForm.email_mitra.value,
@@ -74,4 +67,21 @@ addBookForm.addEventListener('submit', (e) => {
     addBookForm.reset()
   })
   alert("Sudah berhasil ditambahkan")
+})
+
+const article = document.querySelector('.add_artikel')
+article.addEventListener('submit', (e) => {
+  e.preventDefault()
+
+  addDoc(colArticle, {
+   id_artikel : colArticle.id,
+   judul : article.judul_artikel123.value,
+   konten : article.keterangan_artikel123.value,
+   waktu_artikel :new Date("2015-03-25T12:00:00Z")
+ })
+ .then(() => {
+   alert("sukses added with id + :"+ colArticle.id)
+   article.reset()
+ })
+ alert("Sudah berhasil ditambahkanss")
 })

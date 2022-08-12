@@ -4,7 +4,7 @@
 //     getFirestore, collection, getDocs, addDoc
 // } from 'firebase/firestore'
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getFirestore, getDocs, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+import { getFirestore, getDocs, collection, addDoc, setDoc, doc } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
 
 console.log("js updated!")
 const firebaseConfig = {
@@ -24,6 +24,19 @@ const db = getFirestore()
 var dbLokasi = "mitra"
 const colRef = collection(db, dbLokasi) //get table name
 const colArticle = collection(db, "artikel")
+
+function randomIDFirebase() {
+  var result           = '';
+  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for ( var i = 0; i < 20; i++ ) {
+    result += characters.charAt(Math.floor(Math.random() * 
+charactersLength));
+ }
+ return result;
+}
+
+console.log(randomIDFirebase());
 
 //ngambil all data taruh di console
 getDocs(colRef)
@@ -72,13 +85,15 @@ addBookForm.addEventListener('submit', (e) => {
 const article = document.querySelector('.add_artikel')
 article.addEventListener('submit', (e) => {
   e.preventDefault()
+  var randomIDArtikel = randomIDFirebase()
+  
+  setDoc(doc(db, "artikel", randomIDArtikel), {
+    id_artikel : randomIDArtikel,
+    judul : article.judul_artikel123.value,
+    konten : article.keterangan_artikel123.value,
+    waktu_artikel :new Date("2015-03-25T12:00:00Z")
+  })
 
-  addDoc(colArticle, {
-   id_artikel : colArticle.id,
-   judul : article.judul_artikel123.value,
-   konten : article.keterangan_artikel123.value,
-   waktu_artikel :new Date("2015-03-25T12:00:00Z")
- })
  .then(() => {
    alert("sukses added with id + :"+ colArticle.id)
    article.reset()

@@ -38,6 +38,7 @@ charactersLength));
 
 console.log(randomIDFirebase());
 
+
 //ngambil all data taruh di console
 getDocs(colRef)
   .then(snapshot => {
@@ -91,11 +92,11 @@ article.addEventListener('submit', (e) => {
     id_artikel : randomIDArtikel,
     judul : article.judul_artikel123.value,
     konten : article.keterangan_artikel123.value,
-    waktu_artikel :new Date("2015-03-25T12:00:00Z")
+    waktu_artikel :new Date().toUTCString();
   })
 
  .then(() => {
-   alert("sukses added with id + :"+ colArticle.id)
+   alert("sukses added with id + :"+ randomIDArtikel)
    article.reset()
  })
  alert("Sudah berhasil ditambahkanss")

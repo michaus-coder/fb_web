@@ -25,12 +25,12 @@
                 class="img-fluid" alt="Sample image">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-              <form class="login_index">
+              <form class="login_index" id = "login_checker">
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                   <input type="text" id="form3Example3" class="form-control form-control-lg"
                     placeholder="Enter a valid email address" name = "login_email" />
-                  <label class="form-label" for="form3Example3">Username</label>
+                  <label class="form-label" for="form3Example3" id = "your_email">Email Address</label>
                 </div>
       
                 <!-- Password input -->
@@ -40,17 +40,6 @@
                   <label class="form-label" for="form3Example4">Password</label>
                 </div>
       
-                <!-- <div class="d-flex justify-content-between align-items-center"> -->
-                  <!-- Checkbox -->
-                  <!-- <div class="form-check mb-0">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                    <label class="form-check-label" for="form2Example3">
-                      Remember me
-                    </label>
-                  </div>
-                  <a href="#!" class="text-body">Forgot password?</a>
-                </div> -->
-
                  <!-- <form class="login_index" action="#" id="myformlogin"> -->
                 <div class="text-center text-lg-start mt-4 pt-2">
                   <!-- <button href="#" class="btn btn-primary btn-lg"
@@ -108,5 +97,31 @@
 
       
 </body>
+<script>
+  // just for the demos, avoids form submit
+  jQuery.validator.setDefaults({
+      debug: true,
+      success:  function(label){
+          label.attr('id', 'valid');
+        },
+  });
+  $("#login_checker" ).validate({
+      rules: {
+        your_email: {
+            required: true,
+            email: true
+        },
+        password: "required",
+      },
+      messages: {
+        your_email: {
+          required: "Please provide an email"
+        },
+        password: {
+          required: "Please provide a password"
+        },
+      }
+  });
+ </script>
 
 </html>

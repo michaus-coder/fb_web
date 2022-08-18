@@ -29,15 +29,21 @@ Login.addEventListener('submit', (e) => {
 
     const email = Login.login_email.value
     const pass = Login.login_pass.value
-
-    signInWithEmailAndPassword(auth, email, pass)
-      .then((cred) =>{
-        console.log("user masuk")
-        location.replace('https://andrewcortez1.github.io/fb_web/admin.html')
+    if (email.length!=0 && pass.length!=0){
+        signInWithEmailAndPassword(auth, email, pass)
+        .then((cred) =>{
+          console.log("user masuk")
+          location.replace('https://andrewcortez1.github.io/fb_web/admin.html')
+        })
+      .catch((err) =>{
+          console.log(err.message)
+          alert("Cek kembali email dan password yang anda masukkan")
       })
-    .catch((err) =>{
-        console.log(err.message)
-    })
+    }
+    else{
+        alert("Mohon input terlebih dahulu")
+    }
+   
     
 })
 // const Login = document.querySelector('.login_index')

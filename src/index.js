@@ -68,24 +68,49 @@ getDocs(colRef)
 //     })
 // })
 
-const addBookForm =  document.querySelector('.add') //pick which had class add
+//kalo data sudah terisi semua
 
+function checkisFilled(a,b,c,d){
+  if (a!=0 && b!=0 && c!=0 && d!=0){
+    return true
+  }
+  return false
+}
+const addBookForm =  document.querySelector('.add') //pick which had class add
 if (addBookForm){
   addBookForm.addEventListener('submit', (e) => {
     e.preventDefault()
-     addDoc(colRef, {
-      nama_mitra : addBookForm.nama_mitra.value,
-      email_mitra : addBookForm.email_mitra.value,
-      drop_point : addBookForm.drop_point.value,
-      whatsapp : addBookForm.whatsapp.value,
-      status : "unvalidated"
-      
-    })
-    .then(() => {
-      addBookForm.reset()
-    })
-    alert("Sudah berhasil ditambahkan")
+    const email = addBookForm.nama_mitra.value
+    const pass = addBookForm.email_mitra.value
+    const dp = addBookForm.drop_point.value
+    const wa = addBookForm.whatsapp.value
+
+    // if (checkisFilled(email.length, pass.length, dp.length, wa.length)==true){
+      if (email.length!=0 && pass.length!=0 && dp.length!=0 && wa.length!=0){
+        addDoc(colRef, {
+          nama_mitra : addBookForm.nama_mitra.value,
+          email_mitra : addBookForm.email_mitra.value,
+          drop_point : addBookForm.drop_point.value,
+          whatsapp : addBookForm.whatsapp.value,
+          status : "unvalidated" 
+     })
+
+      .then(() => {
+        addBookForm.reset()
+        alert("Sudah berhasil ditambahkan")
+      })
+    }
+    
+    // }
+    else{
+      alert("Belum berhasil ditambahkan")
+    }
+     
+     
   })
+}
+else{
+  alert("Mohon isi semua field terlebih dahulu")
 }
 
 

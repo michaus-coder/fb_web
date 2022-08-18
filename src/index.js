@@ -67,21 +67,27 @@ getDocs(colRef)
 //         addBookForm.reset()
 //     })
 // })
+
 const addBookForm =  document.querySelector('.add') //pick which had class add
-addBookForm.addEventListener('submit', (e) => {
-  e.preventDefault()
-   addDoc(colRef, {
-    nama_mitra : addBookForm.nama_mitra.value,
-    email_mitra : addBookForm.email_mitra.value,
-    drop_point : addBookForm.drop_point.value,
-    whatsapp : addBookForm.whatsapp.value,
-    status : "unvalidated"
+
+if (addBookForm){
+  addBookForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+     addDoc(colRef, {
+      nama_mitra : addBookForm.nama_mitra.value,
+      email_mitra : addBookForm.email_mitra.value,
+      drop_point : addBookForm.drop_point.value,
+      whatsapp : addBookForm.whatsapp.value,
+      status : "unvalidated"
+      
+    })
+    .then(() => {
+      addBookForm.reset()
+    })
+    alert("Sudah berhasil ditambahkan")
   })
-  .then(() => {
-    addBookForm.reset()
-  })
-  alert("Sudah berhasil ditambahkan")
-})
+}
+
 
 const article = document.querySelector('.add_artikel')
 article.addEventListener('submit', (e) => {
@@ -100,4 +106,14 @@ article.addEventListener('submit', (e) => {
    article.reset()
  })
  alert("Sudah berhasil ditambahkanss")
+})
+
+const Login = document.querySelector('.login_index')
+Login.addEventListener('submit', (e) => {
+  e.preventDefault()
+  
+ .then(() => {
+  Login.reset()
+ })
+ alert("Login button pressed")
 })

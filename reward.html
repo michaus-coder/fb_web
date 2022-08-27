@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reward</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<body>
+    <form class="form-detail artikel" action="#" id="formReward">
+      <div class="form-group">
+        <label for="option">Jenis Reward</label>
+        <input type="text" name="option" class="form-control" id="inputOption" aria-describedby="optionHelp" placeholder="Inputkan pilihan reward">
+      </div>
+      <div class="form-group">
+        <label for="description">Deskripsi</label>
+        <textarea class="form-control" name="description" id="inputDescription" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <div class="row justify-content-center">
+          <div class="col-4">
+            <input type="text" name="suboption[]" class="form-control" id="inputSuboption" aria-describedby="suboptionHelp" placeholder="Inputkan jenis reward">
+          </div>
+          <div class="col-4">
+            <input type="text" name="information[]" class="form-control" id="inputInformation" aria-describedby="informationHelp" placeholder="Inputkan jumlah reward">
+          </div>
+          <div class="col-4">
+            <input type="number" name="point[]" class="form-control" id="inputPoint" placeholder="Inputkan jumlah point">
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" id="addSuboption">Tambah</button>
+      </div>
+      <button type="submit" class="btn btn-primary" onclick="input">Submit</button>
+    </form>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script src="./dist/bundle.js"></script>
+    <script type="module" src="./src/reward.js"></script>
+</body>
+</html>
